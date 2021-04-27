@@ -1,0 +1,26 @@
+:root {
+  --dialog-backdrop: #CCCCCCCC;
+  --dialog-background: white;
+}
+
+.dialog {
+  display: none;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  background: var(--dialog-backdrop, black);
+}
+
+.dialog--open {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dialog__main {
+  background: var(--dialog-background, white);
+}

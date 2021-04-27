@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Dialog / Modal box</title>
+
+<link rel="stylesheet" href="../../styles/dialog/dialog.css">
+
+<script type="module">
+  import { open, close } from './dialog.js'
+
+  const dialog = document.querySelector('div[role="dialog"]')
+  const BtnOpen = document.querySelector('body > button')
+  const BtnClose = dialog.querySelector('button.dialog__close')
+
+  BtnOpen.addEventListener('click', () => { open(dialog) })
+  BtnClose.addEventListener('click', () => { close(dialog) })
+</script>
+
+<button>Open Dialog</button>
+
+<div role="dialog" class="dialog"
+  aria-label="My modal label"
+  aria-modal="true"
+  tabindex="0">
+
+  <section class="dialog__main">
+    <!-- Dialog content must be set here -->
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</p>
+    <p>Voluptatibus dolorum magnam culpa quod natus assumenda alias ipsa.</p>
+
+    <button class="dialog__close">Close the modal box</button>
+  </section>
+</div>
