@@ -15,7 +15,7 @@ A dialog box is fundamentally defined by two things:
 
 Usually the backdrop is translucent and the dialog box is opaque but everything is possible. For example, it's possible to have no backdrop but a drop shadow behind the dialog box. Another example is when the dialog box cover the whole viewport (in that case, even if it is technically okay, it can be confusing for the user that could misunderstand the purpose of the UI)
 
-The content of the dialog box if free but usually we have a title, a main content and at least one button to close the dialog (It can be either a button with an explicit label or a cross in the top-right corner, or sometimes in the top-left corner for <abbr title="Right-To-Left">RTL</abbr> languages)
+The content of the dialog box is free but usually we have a title, a main content and at least one button to close the dialog (It can be either a button with an explicit label or a cross in the top-right corner, or sometimes in the top-left corner for <abbr title="Right-To-Left">RTL</abbr> languages)
 
 ## CSS
 

@@ -26,7 +26,7 @@ Because dialog boxes are always on top of the main content to create their own w
 </div>
 ```
 
-Specification for the use of ARIA attribute are defined in [WAI-ARIA Authoring Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)
+Specification for the use of ARIA attribute are defined in [WAI-ARIA Authoring Practices 1.2](https://w3c.github.io/aria-practices/#dialog_modal)
 
 The main `div[role="dialog"]` is the one that will be positioned and that we'll use to set a background that will cover the main content of the page. The `<section>` will contain the whole dialog content. That way we can customize its appearance to create any type of dialog box.
 

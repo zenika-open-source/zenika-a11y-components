@@ -25,7 +25,7 @@ This design toolkit is a foundational work made to demonstrate Zenika exceptiona
 
 ### Technical baseline
 
-- [ARIA Practices 1.1](https://www.w3.org/TR/wai-aria-practices-1.1/)
+- [ARIA Practices 1.2](https://w3c.github.io/aria-practices/)
 - https://a11ysupport.io/
 
 

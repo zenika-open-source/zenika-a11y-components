@@ -26,7 +26,7 @@ Dans la mesure ou les boites de dialogue sont systématiquement positionné au d
 </div>
 ```
 
-L'usage des attributs ARIA est définie dans la spécification [WAI-ARIA Authoring Practices 1.1 (en)](https://www.w3.org/TR/wai-aria-practices-1.1/#dialog_modal)
+L'usage des attributs ARIA est définie dans la spécification [WAI-ARIA Authoring Practices 1.2 (en)](https://w3c.github.io/aria-practices/#dialog_modal)
 
 Le principal élément `div[role="dialog"]` est celui qui sera positionné et qu'on utilisera pour définir un arrière plan qui couvrira le contenu principal de la page. L'élément `<section>` contiendra tout le contenu visible de la boite de dialogue. De cette façon on peut personnalisé l'apparence de notre boite de dialogue pour créer n'importe quel type de dialogue.
 
