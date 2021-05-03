@@ -76,7 +76,7 @@ Dans notre implémentation nous définissons deux pré-requis :
 Certains effets (comme un effet de flou en arrière plan ou une transition douce quand on affiche/masque la boite de dialogue) peuvent requérir une ou plusieurs classes CSS supplémentaires pour être réalisé. Comme d'habitude avec CSS, soyez créatifs. La façon la plus simple de gérer cette question est d'utiliser l'API JavaScript pour ajouter une classe CSS sur le body pour étendre nos possibilités.
 
 ```js
-open(node).then(() => {
+new Dialog(node).open().then(() => {
   // Lorsque cette class est appliquée, nous some sur que le navigateur à
   // réalisé un reflow suite au changement de display de la boite de dialogue.
   // C'est necessaire pour pouvoir appliquer une éventuelle transition CSS.

@@ -41,5 +41,6 @@ JavaScript is used to control dialogue box in two ways:
 
 ### API
 
- - `open(HTMLElement: node): Promise`: Take the node provided, test it and _open_ the dialog box (apply CSS class `dialog--open`, gives the focus to the dialog and trap the focus). The async API allows to apply some post open treatment (for example, to apply an open CSS effect to smoothly show the modal)
- - `close(HTMLElement: node): Promise`: Take the node provided, test it and _close_ the dialog box (remove the CSS class `dialog--open`, release the focus trap, gives back the focus to the element that had the focus before we open the dialog box). The async API allows to apply some post close treatment (for example, to remove the dialog box from the DOM)
+ - `new Dialog(HTMLElement: node)`: Create a new dialog API for the given node.
+ - `dialog.open(): Promise<Dialog>`: _Open_ the dialog box (apply CSS class `dialog--open`, gives the focus to the dialog and trap the focus). The async API allows to apply some post open treatment (for example, to apply an open CSS effect to smoothly show the modal)
+ - `dialog.close(): Promise<Dialog>`: _Close_ the dialog box (remove the CSS class `dialog--open`, release the focus trap, gives back the focus to the element that had the focus before we open the dialog box). The async API allows to apply some post close treatment (for example, to remove the dialog box from the DOM)

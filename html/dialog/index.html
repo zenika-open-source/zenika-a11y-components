@@ -6,14 +6,14 @@
 <link rel="stylesheet" href="../../styles/dialog/dialog.css">
 
 <script type="module">
-  import { open, close } from './dialog.js'
+  import Dialog from './dialog.js'
 
-  const dialog = document.querySelector('div[role="dialog"]')
+  const dialog = new Dialog(document.querySelector('div[role="dialog"]'))
   const BtnOpen = document.querySelector('body > button')
-  const BtnClose = dialog.querySelector('button.dialog__close')
+  const BtnClose = dialog.node.querySelector('button.dialog__close')
 
-  BtnOpen.addEventListener('click', () => { open(dialog) })
-  BtnClose.addEventListener('click', () => { close(dialog) })
+  BtnOpen.addEventListener('click', () => { dialog.open() })
+  BtnClose.addEventListener('click', () => { dialog.close() })
 </script>
 
 <button>Open Dialog</button>

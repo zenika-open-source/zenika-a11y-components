@@ -73,7 +73,7 @@ In our implementation we define two requirements:
 Some effects (such as a blur on the backdrop or a smooth transition when the dialog display is changed) can require some extra CSS class to be done. As usual with CSS, feel free to be creative. The easiest way to deal with that is to use the JavaScript API to add an extra CSS class on the body to gain some opportunities.
 
 ```js
-open(node).then(() => {
+new Dialog(node).open().then(() => {
   // When this class is set, we are sure that the browser has performed
   // a reflow after the change of display state for the dialog box. This
   // is necessary to let us transition properties if we wish to.
