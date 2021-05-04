@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Alert / Alert dialog</title>
+
+<link rel="stylesheet" href="../../styles/dialog/dialog.css">
+<link rel="stylesheet" href="../../styles/alert/alert.css">
+
+<style>
+  body {
+    font: 1.5rem sans-serif;
+    padding: 1rem;
+    background: #DDD;
+  }
+
+  button {
+    font-size: inherit;
+    cursor: pointer;
+  }
+
+  .dialog__main {
+    padding: .75rem;
+    border-radius: .25rem;
+  }
+
+  .alert {
+    padding: .5rem;
+    margin: 0 0 1rem 0;
+    cursor: pointer;
+  }
+</style>
+
+<script type="module">
+  import * as dom from '../_lib/utils/dom.js'
+  import { Alert, AlertNotification, AlertDialog } from './alert.js'
+
+  let count = { alert: 0, notification: 0, dialog: 0 }
+
+  // Simple in-flow alert -----------------------------------------------------
+  const alert = new Alert(dom.$('.alert'))
+
+  dom.$('.triggerAlert')
+    .addEventListener('click', () => {
+      count.alert += 1
+      alert.open('This is a inline alert box (click me to close) : ' + count.alert)
+    })
+
+  alert.node.addEventListener('click', () => alert.close())
+
+  // Notification alert -------------------------------------------------------
+  const notification = new AlertNotification(dom.$('.alert--notification'))
+
+  dom.$('.triggerAlertNotification')
+    .addEventListener('click', () => {
+      count.notification += 1
+      notification.open('This is a inline alert box (click me to close) : ' + count.notification)
+    })
+
+  // Alert dialog box ---------------------------------------------------------
+  const dialog = new AlertDialog(dom.$('.dialog--alert'))
+
+  dom.$('.triggerDialog')
+    .addEventListener('click', () => {
+      count.dialog += 1
+      dialog.open('This is a dialog alert box : ' + count.dialog)
+    })
+
+  dom.$('.dialog__close')
+    .addEventListener('click', () => dialog.close())
+
+  // Close everything on ESC (Already build-in for Dialog) --------------------
+  document.addEventListener(
+    'keyup', (e) => e.key === 'Escape'
+      && alert.close()
+      && notification.close()
+  )
+
+</script>
+
+<div role="alert" class="alert"></div>
+
+<div role="alert" class="alert alert--notification"></div>
+
+<div role="alertdialog" class="dialog dialog--alert"
+  aria-label="Alert"
+  aria-modal="true"
+  tabindex="0">
+
+  <section class="dialog__main dialog__main--alert">
+    <button class="dialog__close">Close the modal box</button>
+  </section>
+</div>
+
+
+<button class="triggerAlert">Trigger an alert</button>
+<button class="triggerAlertNotification">Trigger an alert notification</button>
+<button class="triggerDialog">Trigger an alert dialog</button>
+
+<hr>
+
+<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Accusantium consectetur minima mollitia ullam, assumenda possimus iste et rerum aperiam doloremque, deserunt at asperiores maxime recusandae incidunt qui consequatur quibusdam in?</p>
+<p>Ipsa nostrum repellat animi, accusantium dolores, voluptate iste facere dolorem doloremque, dicta ex? Culpa at sequi nesciunt tempore, necessitatibus eius quae facilis eligendi ipsum fugit sed id delectus. Magni, quod.</p>
+<p>Animi, officiis. Voluptatibus expedita ut atque accusamus, distinctio aspernatur suscipit ipsum hic corrupti at obcaecati iusto omnis. Quia deleniti quasi culpa, libero natus reiciendis nobis distinctio adipisci. Sit, repudiandae rerum!</p>
+<p>Est dolores a reprehenderit vero voluptatum, aliquid veniam esse maiores, laboriosam minus dolorem quidem repellendus assumenda accusamus amet ullam quae eos modi provident quibusdam cum. Exercitationem numquam quos molestiae veniam?</p>
+<p>Dolorum pariatur fuga iste libero dicta fugit qui vitae totam doloremque et modi quaerat veritatis ipsa voluptate sed nihil quisquam, error minima rerum ab perferendis! Quia exercitationem eveniet repellendus aperiam.</p>
+<p>Aperiam laudantium quas deserunt, expedita fugiat ab neque? Reiciendis quae unde architecto nam, aspernatur ad ullam optio blanditiis. Exercitationem consequuntur ducimus dolor accusantium corporis esse dolore optio at cupiditate deserunt?</p>
+<p>Veniam magnam repellat delectus nostrum iure molestias eaque. Doloremque corporis architecto recusandae qui reprehenderit unde ipsa repellendus molestias nulla fuga, exercitationem porro, esse eos dolorum eaque, impedit temporibus? Molestias, ullam!</p>
+<p>Laudantium molestias tempore porro impedit, fugit consectetur excepturi possimus laborum quod facere voluptas minus debitis eligendi assumenda corrupti officiis ad asperiores aut cumque suscipit culpa quaerat quidem non esse. Officia.</p>
+<p>Fugiat error ut eius at libero labore iure repudiandae vel molestias tenetur laboriosam hic mollitia facilis sunt consectetur possimus vero sed minima, natus dolorem quos odit. Voluptatibus natus temporibus quos.</p>
+<p>Nam vero deleniti, temporibus suscipit voluptate rem harum expedita nihil, sapiente quam optio aut beatae, doloribus sint ex unde animi labore. Reiciendis a velit animi, odio modi aspernatur perspiciatis tempore!</p>
+<p>Harum asperiores, aspernatur hic sunt minima natus odit vitae minus eaque! Sunt nam vero vitae, vel quod, quae eveniet quidem nemo nisi minus adipisci, natus excepturi laborum inventore saepe unde.</p>
+<p>Unde odio minima necessitatibus repellendus itaque, assumenda consequuntur inventore suscipit cupiditate est aperiam mollitia iusto quas reprehenderit, culpa dolores ipsa quae consectetur debitis vitae hic aliquam libero quisquam recusandae! Nostrum.</p>
+<p>Accusantium amet ea molestiae rem quas laborum ut eum nostrum officiis tenetur quis nemo sint at, recusandae iure aliquid? Quam cupiditate similique vel qui blanditiis laudantium quo tenetur et enim.</p>
+<p>Sapiente inventore accusantium fuga quibusdam vero possimus. Assumenda molestias, minima suscipit vel inventore et adipisci reiciendis necessitatibus, neque nisi tempora numquam deleniti nesciunt incidunt aspernatur? Quas incidunt asperiores inventore deserunt!</p>
+<p>Ratione inventore voluptas quod assumenda illum sint, laboriosam nihil, accusamus reprehenderit labore consequatur! Illum optio quidem, iure dolorem fuga nemo. Accusamus quas est, quae quam blanditiis corporis aperiam earum cupiditate.</p>
+<p>Molestiae soluta nesciunt a nemo placeat itaque maxime cum aut aperiam. Modi veniam facilis odio hic laborum. Hic itaque velit, similique quibusdam, id suscipit eos assumenda architecto amet eveniet consectetur!</p>
+<p>Magni quibusdam amet minus necessitatibus, corporis laboriosam quisquam aut enim autem iste assumenda, voluptatem, deserunt eos ea ex rem dignissimos ipsam neque voluptates doloremque? Maxime molestiae aliquam laborum eligendi accusamus?</p>
+<p>Exercitationem nihil aliquam magni nisi corporis eligendi ipsum ipsam! Soluta suscipit ipsum quia corrupti atque, iure, quis doloribus accusamus nostrum laboriosam exercitationem architecto rem deleniti quae provident eaque vel beatae.</p>
+<p>Accusantium dolorum id facere explicabo reiciendis magni ipsum expedita dolorem. Eum expedita consectetur dolore neque corporis vitae sit nihil, nulla quia repellat, nemo sed maiores nobis suscipit ipsa. Velit, ipsum.</p>
+<p>Quas hic ex quasi sed nobis corporis non quam dignissimos corrupti dolores deserunt aspernatur blanditiis quaerat repudiandae voluptatibus inventore atque ipsum excepturi iure assumenda tenetur, quidem, quisquam magni. Minus, dolore.</p>

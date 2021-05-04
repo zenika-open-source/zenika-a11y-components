@@ -1,10 +1,8 @@
+import { dom, log, tick } from '../_lib/utils.js';
 import { trapFocus, releaseFocus } from '../_lib/focus.js';
 
 // We can have only one dialog box open at a given time
 let OPEN_DIALOG = null;
-
-// Safari needs an explicite tick to properly reflow the dialog display
-const tick = () => new Promise(setTimeout);
 
 // MAIN API -------------------------------------------------------------------
 
@@ -16,6 +14,24 @@ export default class Dialog {
    */
   constructor(node) {
     this.node = node;
+    this.node.setAttribute('role', 'dialog')
+    this.node.setAttribute('aria-modal', 'true')
+    this.node.classList.add(Dialog.DIALOG_CLASS_ROOT)
+
+    if (!dom.$cls(Dialog.DIALOG_CLASS_MAIN, this.node)) {
+      this.node.append(
+        html`<section class="${Dialog.DIALOG_CLASS_MAIN}"></section>`
+      );
+    }
+
+    if (
+      !this.node.getAttribute('aria-label')
+      && !this.node.getAttribute('aria-labelledby')
+    ) {
+      log.error`
+        Dialog box MUST have an accessible label.
+        Please provide one with ${'aria-label'} or ${'aria-labelledby'}.`
+    }
   }
 
   /**
@@ -39,11 +55,13 @@ export default class Dialog {
   }
 
   /**
-   * Close the dialog box
+   * Close the dialog box (if it is the one open)
    * @returns {Promise<Dialog>}
    */
   async close() {
-    await Dialog.close()
+    if (Dialog.getOpen() === this) {
+      await Dialog.close()
+    }
 
     return this
   }
@@ -72,10 +90,28 @@ export default class Dialog {
   }
 
   /**
+   * The name of the CSS class that identify a dialog box.
+   * @type {string}
+   */
+  static DIALOG_CLASS_ROOT = 'dialog'
+
+  /**
    * The name of the CSS class that indicates a dialog is open.
    * @type {string}
    */
   static DIALOG_CLASS_OPEN = 'dialog--open'
+
+  /**
+   * The name of the CSS class that identify the main area of the dialog box.
+   * @type {string}
+   */
+   static DIALOG_CLASS_MAIN = 'dialog__main'
+
+   /**
+    * The name of the CSS class that identify the content of the dialog box.
+    * @type {string}
+    */
+   static DIALOG_CLASS_CONTENT = 'dialog__content'
 }
 
 // Let's make sure that "Escape" close any open dialog

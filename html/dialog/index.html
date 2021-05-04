@@ -5,18 +5,48 @@
 
 <link rel="stylesheet" href="../../styles/dialog/dialog.css">
 
+<style>
+  body {
+    font: 1.5rem sans-serif;
+    padding: 1rem;
+    background: #DDD;
+  }
+
+  button {
+    font-size: inherit;
+    cursor: pointer;
+  }
+
+  .dialog__main {
+    padding: .75rem;
+    border-radius: .25rem;
+  }
+</style>
+
 <script type="module">
+  import * as dom from '../_lib/utils/dom.js'
   import Dialog from './dialog.js'
 
-  const dialog = new Dialog(document.querySelector('div[role="dialog"]'))
-  const BtnOpen = document.querySelector('body > button')
-  const BtnClose = dialog.node.querySelector('button.dialog__close')
+  const dialog = new Dialog(dom.$('.dialog'))
 
-  BtnOpen.addEventListener('click', () => { dialog.open() })
-  BtnClose.addEventListener('click', () => { dialog.close() })
+  dom.$('.dialog__close').addEventListener('click', () => { dialog.close() })
+  dom.$$('.dialog__open').forEach(node => node.addEventListener('click', () => { dialog.open() }))
 </script>
 
-<button>Open Dialog</button>
+<button class="dialog__open">Open Dialog</button>
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Natus quia quae perferendis vero iusto ea officia voluptates hic, reprehenderit veniam, aut, tempora ipsa sapiente nulla. Sapiente ipsam esse aspernatur distinctio.</p>
+<p>Voluptate vero inventore animi voluptas, est nemo voluptatibus velit et excepturi deleniti aliquid ipsa rerum dolorem eligendi modi exercitationem aspernatur, iste maxime amet, repellat laborum! Magnam placeat hic quisquam vitae!</p>
+<p>Ducimus dolorum veniam quos iste vel dolores voluptates sunt harum eius perspiciatis fuga soluta aliquid illo placeat, quod sapiente quidem minima blanditiis. Delectus, minus velit soluta est temporibus rerum quae.</p>
+<p>Quia esse libero iusto eaque modi voluptatibus perspiciatis placeat, consequatur velit porro, odio vero minima quod? Quia voluptas aspernatur, debitis tempore aliquid at numquam, repellendus eligendi ipsam ab eum accusamus?</p>
+<p>Mollitia fugiat doloribus vitae maxime vel corrupti voluptatibus et aperiam inventore, debitis neque quasi eveniet illum at accusamus ullam quisquam rerum vero eos. Illo quos ad deleniti fugiat qui expedita.</p>
+<p>Blanditiis deserunt iure dolorem quidem ipsum, laudantium facere asperiores magnam. Voluptatibus harum, nulla, dolor, tenetur ad in fugit rem sed facere reiciendis laboriosam dicta maiores non! Atque architecto excepturi debitis.</p>
+<p>Molestiae, officia est architecto necessitatibus, aspernatur, vel maiores eos rerum doloremque velit porro quo. Facilis non ratione totam ad alias, inventore repellat ut minima voluptatum aliquam iure eveniet unde quos.</p>
+<p>Maiores saepe excepturi, hic, nisi harum praesentium natus nemo porro impedit velit aut? Porro id incidunt consequatur blanditiis itaque eveniet, ducimus totam provident labore tempore inventore dicta rem suscipit odio?</p>
+<p>Sint consequuntur ratione molestias debitis inventore voluptates aut excepturi enim pariatur! Blanditiis, dolorum sequi aliquid dolorem ullam asperiores iste nostrum iure, animi accusamus error ipsum possimus debitis, facere ratione maiores?</p>
+<p>Iure possimus animi tempora? Quasi voluptas cum nostrum modi illum mollitia earum sit dolor eveniet incidunt dolore doloribus adipisci, explicabo nemo ipsam quidem sequi dolores quis voluptate pariatur? Exercitationem, vitae!</p>
+
+<button class="dialog__open">Open Dialog</button>
 
 <div role="dialog" class="dialog"
   aria-label="My modal label"
