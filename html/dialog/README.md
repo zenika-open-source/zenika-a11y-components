@@ -26,7 +26,7 @@ Because dialog boxes are always on top of the main content to create their own w
 </div>
 ```
 
-Specification for the use of ARIA attribute are defined in [WAI-ARIA Authoring Practices 1.2](https://w3c.github.io/aria-practices/#dialog_modal)
+Specification for the use of ARIA attributes are defined in [WAI-ARIA Authoring Practices 1.2](https://w3c.github.io/aria-practices/#dialog_modal)
 
 The main `div[role="dialog"]` is the one that will be positioned and that we'll use to set a background that will cover the main content of the page. The `<section>` will contain the whole dialog content. That way we can customize its appearance to create any type of dialog box.
 
@@ -42,5 +42,6 @@ JavaScript is used to control dialogue box in two ways:
 ### API
 
  - `new Dialog(HTMLElement: node)`: Create a new dialog API for the given node.
- - `dialog.open(): Promise<Dialog>`: _Open_ the dialog box (apply CSS class `dialog--open`, gives the focus to the dialog and trap the focus). The async API allows to apply some post open treatment (for example, to apply an open CSS effect to smoothly show the modal)
- - `dialog.close(): Promise<Dialog>`: _Close_ the dialog box (remove the CSS class `dialog--open`, release the focus trap, gives back the focus to the element that had the focus before we open the dialog box). The async API allows to apply some post close treatment (for example, to remove the dialog box from the DOM)
+ - `Dialog::open(): Promise<Dialog>`: _Open_ the dialog box (apply CSS class `dialog--open`, gives the focus to the dialog and trap the focus). The async API allows to apply some post open treatment (for example, to apply an open CSS effect to smoothly show the modal)
+ - `Dialog::close(): Promise<Dialog>`: _Close_ the dialog box (remove the CSS class `dialog--open`, release the focus trap, gives back the focus to the element that had the focus before we open the dialog box). The async API allows to apply some post close treatment (for example, to remove the dialog box from the DOM)
+ - `Dialog.close(): Promise`: Close any open dialog box.

@@ -42,5 +42,6 @@ JavaScript est utilisé pour contrôler les boites de dialogue de deux façons 
 ### API
 
  - `new Dialog(HTMLElement: node)`: Créer une nouvelle API de boite de dialogue pour le nœud fournis.
- - `open(HTMLElement: node): Promise`: _Affiche_ la boite de dialogue (en ajoutant la class CSS `dialog--open`, en donnant le focus à la boite de dialogue, et en enfermant le focus). La nature asynchrone de l'API permet d'appliquer des post-traitement suite à l'ouverture (par exemple, en appliquant un effet d'ouverture CSS à la boite de dialogue).
- - `close(HTMLElement: node): Promise`: _Masque_ la boite de dialogue (en supprimant la class CSS `dialog--open`, en libérant le focus, et en redonnant le focus à l'élément qui l'avait avant l'ouverture de la boite de dialogue). La nature asynchrone de l'API permet d'appliquer des post-traitement suite à la fermeture (par exemple, pour supprimer les nœuds DOM de la boite de dialogue).
+ - `Dialog::open(): Promise<Dialog>`: _Affiche_ la boite de dialogue (en ajoutant la class CSS `dialog--open`, en donnant le focus à la boite de dialogue, et en enfermant le focus). La nature asynchrone de l'API permet d'appliquer des post-traitement suite à l'ouverture (par exemple, en appliquant un effet d'ouverture CSS à la boite de dialogue).
+ - `Dialog::close(): Promise<Dialog>`: _Masque_ la boite de dialogue (en supprimant la class CSS `dialog--open`, en libérant le focus, et en redonnant le focus à l'élément qui l'avait avant l'ouverture de la boite de dialogue). La nature asynchrone de l'API permet d'appliquer des post-traitement suite à la fermeture (par exemple, pour supprimer les nœuds DOM de la boite de dialogue).
+ - `Dialog.close(): Promise`: Ferme n'importe quel boite de dialogue.
