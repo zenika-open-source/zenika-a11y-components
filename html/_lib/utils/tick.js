@@ -6,4 +6,4 @@
  * some effects like transitionning a CSS value after a change of an element
  * display property.
  */
-export const tick = () => new Promise(setTimeout);
+export const tick = () => new Promise(setTimeout)

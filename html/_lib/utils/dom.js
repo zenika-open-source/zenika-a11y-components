@@ -12,12 +12,12 @@ export function id(node) {
   }
 
   if (!node.id) {
-    node.id =
-      Math.floor(Math.random() * 26 + 10).toString(36) +
-      Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(36)
+    node.id
+      = Math.floor((Math.random() * 26) + 10).toString(36)
+      + Math.floor(Math.random() * Number.MAX_SAFE_INTEGER).toString(36)
   }
 
-  return node.id;
+  return node.id
 }
 
 /**
@@ -26,8 +26,8 @@ export function id(node) {
  * @returns {DocumentFragment}
  */
 export function html(strings, ...keys) {
-  const str = strings.map((substr, i) => substr + keys[i]).join('');
-  return document.createRange().createContextualFragment(str);
+  const str = strings.map((substr, i) => substr + keys[i]).join('')
+  return document.createRange().createContextualFragment(str)
 }
 
 /**
@@ -52,11 +52,11 @@ export function $$(what, where = document.body) {
 
 /**
  * Get the element matching the given id
- * @param {string} id The id of the element we are looking for
+ * @param {string} who The id of the element we are looking for
  * @returns {Element|null}
  */
-export function $id(id) {
-  return document.getElementById(id)
+export function $id(who) {
+  return document.getElementById(who)
 }
 
 /**

@@ -1,6 +1,6 @@
 # Welcome to zenika-a11y-components 👋
 <!-- ![Version](https://img.shields.io/badge/version-0.0.0-blue.svg?cacheSeconds=2592000) -->
-<!-- [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](#) -->
+<!-- [![License: Apache 2.0](https://img.shields.io/badge/license-Apache%202-blue)](#) -->
 
 > The Zenika A11Y Component project provide a very basic and versatile design toolkit that can fit in any project. It put accessibility and usability first and is a perfect starting point to build up more complex design systems or to fit into existing ones.
 

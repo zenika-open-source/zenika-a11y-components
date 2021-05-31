@@ -13,29 +13,25 @@ const FOCUS_TRAP = new WeakMap()
  * @return {boolean}
  */
 export function focusChild(node, direction = 'first') {
-  console.log('looking:', direction)
   let children = Array.from(node.children)
-
-  console.log(children[0])
 
   if (direction === 'last') {
     children = children.reverse()
   }
 
-  console.log(children[0])
-
-
-  for (let child of children) {
+  for (const child of children) {
     child.focus()
-    console.log(document.activeElement)
+
     if (document.activeElement === child) {
       return true
-    } else if (focusChild(child, direction)) {
+    }
+
+    if (focusChild(child, direction)) {
       return true
     }
   }
 
-  return false;
+  return false
 }
 
 /**

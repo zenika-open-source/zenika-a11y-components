@@ -1,0 +1,27 @@
+{
+  "name": "zenika-a11y-components",
+  "version": "0.0.0",
+  "description": "The Zenika A11Y Component project provide a very basic and versatile design toolkit to design accessible components.",
+  "type": "module",
+  "scripts": {
+    "test": "npm run lint",
+    "lint": "eslint **/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenika-open-source/zenika-a11y-components.git"
+  },
+  "keywords": [
+    "a11y"
+  ],
+  "author": "Zenika",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/zenika-open-source/zenika-a11y-components/issues"
+  },
+  "homepage": "https://github.com/zenika-open-source/zenika-a11y-components#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.27.0"
+  }
+}

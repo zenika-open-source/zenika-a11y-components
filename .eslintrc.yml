@@ -1,0 +1,142 @@
+root: true
+parser: 'babel-eslint'
+env:
+  browser: true
+  es2021: true
+extends: 'eslint:recommended'
+parserOptions:
+  ecmaVersion: 12
+  sourceType: module
+rules:
+  array-bracket-newline:
+    - error
+    - consistent
+  array-bracket-spacing:
+    - error
+    - never
+  array-callback-return: error
+  array-element-newline:
+    - error
+    - consistent
+  arrow-parens: error
+  block-spacing:
+    - error
+    - always
+  camelcase: error
+  comma-style: error
+  computed-property-spacing: error
+  consistent-return: error
+  curly: error
+  default-param-last: error
+  dot-location:
+    - error
+    - property
+  eol-last: error
+  eqeqeq: error
+  func-call-spacing: error
+  func-names: error
+  func-style:
+    - error
+    - declaration
+    - allowArrowFunctions: true
+  function-paren-newline:
+    - error
+    - consistent
+  grouped-accessor-pairs:
+    - error
+    - getBeforeSet
+  indent:
+    - error
+    - 2
+  lines-around-comment:
+    - error
+    - allowArrayStart: true
+      allowBlockStart: true
+      allowClassStart: true
+      allowObjectStart: true
+      beforeBlockComment: true
+      beforeLineComment: true
+  lines-between-class-members:
+    - error
+    - always
+    - exceptAfterSingleLine: true
+  max-len:
+    - error
+    - code: 100
+      ignoreUrls: true
+      ignoreTemplateLiterals: true
+      ignoreRegExpLiterals: true
+  new-cap: error
+  new-parens: error
+  no-alert: error
+  no-caller: error
+  no-duplicate-imports: error
+  no-else-return:
+    - error
+    - allowElseIf: false
+  no-extra-bind: error
+  no-implicit-coercion: error
+  no-implicit-globals: error
+  no-implied-eval: error
+  no-iterator: error
+  no-labels: error
+  no-lone-blocks: error
+  no-lonely-if: error
+  no-loss-of-precision: error
+  no-mixed-operators: error
+  no-multi-assign: error
+  no-multi-str: error
+  no-negated-condition: error
+  no-new: error
+  no-new-wrappers: error
+  no-param-reassign: warn
+  no-plusplus: error
+  no-restricted-syntax:
+    - error
+    - SwitchStatement
+  no-return-assign: error
+  no-return-await: error
+  no-self-compare: error
+  no-shadow: error
+  no-throw-literal: error
+  no-trailing-spaces: error
+  no-undefined: error
+  no-unmodified-loop-condition: error
+  no-unneeded-ternary: error
+  no-unreachable-loop: warn
+  no-unsafe-optional-chaining:
+    - error
+    - disallowArithmeticOperators: true
+  no-useless-call: error
+  no-useless-concat: error
+  no-useless-return: error
+  no-var: error
+  no-whitespace-before-property: error
+  object-curly-newline:
+    - error
+    - consistent: true
+  one-var:
+    - error
+    - never
+  operator-linebreak:
+    - error
+    - before
+  prefer-arrow-callback: error
+  prefer-const: error
+  prefer-numeric-literals: error
+  prefer-object-spread: error
+  prefer-rest-params: error
+  prefer-template: error
+  quotes:
+    - error
+    - single
+    - avoidEscape: true
+      allowTemplateLiterals: true
+  require-atomic-updates: error
+  require-await: warn
+  semi:
+    - error
+    - never
+    - beforeStatementContinuationChars: always
+  space-in-parens: error
+  spaced-comment: error

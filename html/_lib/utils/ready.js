@@ -13,9 +13,9 @@ export const ready = new Promise((resolve) => {
   window.addEventListener('DOMContentLoaded', isReady)
 
   if (
-    document.readyState === 'interactive' ||
-    document.readyState === 'complete'
+    document.readyState === 'interactive'
+    || document.readyState === 'complete'
   ) {
-    return isReady()
+    isReady()
   }
 })

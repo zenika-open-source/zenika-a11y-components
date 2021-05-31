@@ -1,8 +1,8 @@
-import { dom, log, tick } from '../_lib/utils.js';
-import { trapFocus, releaseFocus } from '../_lib/focus.js';
+import { dom, log, tick } from '../_lib/utils.js'
+import { trapFocus, releaseFocus } from '../_lib/focus.js'
 
 // We can have only one dialog box open at a given time
-let OPEN_DIALOG = null;
+let OPEN_DIALOG = null
 
 // MAIN API -------------------------------------------------------------------
 
@@ -13,15 +13,15 @@ export default class Dialog {
    * @param {HTMLElement} node
    */
   constructor(node) {
-    this.node = node;
+    this.node = node
     this.node.setAttribute('role', 'dialog')
     this.node.setAttribute('aria-modal', 'true')
     this.node.classList.add(Dialog.DIALOG_CLASS_ROOT)
 
     if (!dom.$cls(Dialog.DIALOG_CLASS_MAIN, this.node)) {
       this.node.append(
-        html`<section class="${Dialog.DIALOG_CLASS_MAIN}"></section>`
-      );
+        dom.html`<section class="${Dialog.DIALOG_CLASS_MAIN}"></section>`
+      )
     }
 
     if (

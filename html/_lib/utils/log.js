@@ -16,6 +16,6 @@ export function log(...args) {
   console.log(...format(...args))
 }
 
-log.error = (...args) => console.error(...format(...args));
-log.warn = (...args) => console.warn(...format(...args));
-log.info = (...args) => console.info(...format(...args));
+log.error = (...args) => console.error(...format(...args))
+log.warn = (...args) => console.warn(...format(...args))
+log.info = (...args) => console.info(...format(...args))

@@ -1,5 +1,5 @@
-import { dom, log, ready, tick } from '../_lib/utils.js'
-import Dialog from '../dialog/dialog.js';
+import { dom, ready, tick } from '../_lib/utils.js'
+import Dialog from '../dialog/dialog.js'
 
 export class Alert {
   constructor(node) {
@@ -49,7 +49,8 @@ export class Alert {
    * Be carful that clearing out the alert content won't be notify to the user,
    * regardless of the alert display state.
    *
-   * @param {boolean} [keepContent] Indicate if the alert box content should be kept in the DOM (default: false)
+   * @param {boolean} [keepContent]
+   *   Indicate if the alert box content should be kept in the DOM (default: false)
    * @returns {Promise<Alert>}
    */
   async close(keepContent = false) {
@@ -97,8 +98,8 @@ export class AlertDialog extends Dialog {
     this.node.setAttribute('role', 'alertdialog')
     this.node.classList.add(AlertDialog.DIALOG_CLASS_ROOT)
 
-    const mainNode = dom.$cls(Dialog.DIALOG_CLASS_MAIN, this.node);
-    mainNode.classList.add(AlertDialog.DIALOG_CLASS_MAIN);
+    const mainNode = dom.$cls(Dialog.DIALOG_CLASS_MAIN, this.node)
+    mainNode.classList.add(AlertDialog.DIALOG_CLASS_MAIN)
 
     this.contentNode = dom.$cls(Dialog.DIALOG_CLASS_CONTENT, mainNode)
 
@@ -118,10 +119,10 @@ export class AlertDialog extends Dialog {
   async open(message) {
     // Some screen readers do not present the alert if it is
     // displayed before the DOMContentLoaded event
-    await ready;
+    await ready
 
     if (typeof message === 'string') {
-      this.contentNode.innerHTML = message;
+      this.contentNode.innerHTML = message
     }
 
     if (message instanceof Node) {
@@ -134,7 +135,8 @@ export class AlertDialog extends Dialog {
 
   /**
    * Close the dialog box (if it is the one open)
-   * @param {boolean} [keepContent] Indicate if the alert dialog content should be kept in the DOM (default: false)
+   * @param {boolean} [keepContent]
+   *   Indicate if the alert dialog content should be kept in the DOM (default: false)
    * @returns {Promise<AlertDialog>}
    */
   async close(keepContent = false) {
@@ -147,7 +149,8 @@ export class AlertDialog extends Dialog {
 
   /**
    * Close any open dialog box
-   * @param {boolean} [keepContent] Indicate if the alert dialog content should be kept in the DOM (default: false)
+   * @param {boolean} [keepContent]
+   *   Indicate if the alert dialog content should be kept in the DOM (default: false)
    * @returns {Promise}
    */
   static async close(keepContent = false) {
