@@ -1,0 +1,46 @@
+:root {
+  /* We use CSS custom properties to ease customizing our alert boxes.
+     But you should simply overload the `.alert`, `.alert--notifiation` and
+     `.dialog--alert` selectors in your own style sheet. */
+  --alert-border: 1px solid #900; /* a dark red line */
+  --alert-background: #FDD;       /* light pink */
+  --alert-position-start: 1rem;  /* Vertical positionning */
+  --alert-position-end: 1rem;    /* Horizontal positionning */
+}
+
+.alert {
+  display: none;
+
+  border: var(--alert-border);
+  background: var(--alert-background);
+}
+
+/* Modifier that indicates that the modal is open */
+.alert--open {
+  display: block;
+}
+
+.alert--notification {
+  /* An alert notification box must be positioned on top of the content and
+     in the viewport, regardeless of the scroll position of the main page */
+  position: fixed;
+
+  /* We Assume LTR content by default. In this case,
+     our notification is put in the top-right corner of the viewport */
+  top: var(--alert-position-start);
+  right: var(--alert-position-end);
+}
+
+[dir="rtl"] .alert--notification {
+  /* If the notifiation is displayed in an RTL environment,
+     the notification is put in the top-left corner of the viewport */
+  left: var(--alert-position-end);
+  right: auto;
+}
+
+.dialog__main--alert {
+  /* We extend the style of regular Dialog box with the specificity of
+     Alert Dialog boxes.*/
+  border: var(--alert-border);
+  background: var(--alert-background);
+}

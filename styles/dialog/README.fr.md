@@ -25,7 +25,7 @@ Dans notre implémentation nous définissons deux pré-requis :
 
 ```css
 :root {
-  /* On utilise des propriété personnalisé CSS pour facilité la
+  /* On utilise des propriétés personnalisées CSS pour faciliter la
      personnalisation de notre boite de dialogue. Cependant vous
      devriez simplement surcharger les selecteurs `.dialog`,
      `.dialog--open` and `.dialog__main` dans votre propre feuille
@@ -77,7 +77,7 @@ Certains effets (comme un effet de flou en arrière plan ou une transition douce
 
 ```js
 new Dialog(node).open().then(() => {
-  // Lorsque cette class est appliquée, nous some sur que le navigateur à
+  // Lorsque cette class est appliquée, nous sommes sur que le navigateur à
   // réalisé un reflow suite au changement de display de la boite de dialogue.
   // C'est necessaire pour pouvoir appliquer une éventuelle transition CSS.
   document.body.classList.add('dialogIsOpen')

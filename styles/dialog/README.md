@@ -25,7 +25,7 @@ In our implementation we define two requirements:
 
 ```css
 :root {
-  /* We use CSS custom properties to ease customizing our dialog box.
+  /* We use CSS custom properties to ease customizing our dialog boxes.
      But you should simply overload the `.dialog`, `.dialog--open` and
      `.dialog__main` selectors in your own style sheet. */
   --dialog-backdrop: #CCCCCCCC; /* translucent grey */
