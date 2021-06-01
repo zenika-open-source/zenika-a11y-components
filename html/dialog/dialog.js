@@ -10,7 +10,7 @@ let OPEN_DIALOG = null
 export default class Dialog {
   /**
    * Create a dialog box API for the given node
-   * @param {HTMLElement} node
+   * @param {Element} node
    */
   constructor(node) {
     this.node = node
@@ -19,9 +19,9 @@ export default class Dialog {
     this.node.classList.add(Dialog.DIALOG_CLASS_ROOT)
 
     if (!dom.$cls(Dialog.DIALOG_CLASS_MAIN, this.node)) {
-      this.node.append(
-        dom.html`<section class="${Dialog.DIALOG_CLASS_MAIN}"></section>`
-      )
+      const main = dom.html`<section class="${Dialog.DIALOG_CLASS_MAIN}"></section>`
+      this.node.childNodes.forEach((child) => main.append(child))
+      this.node.append(main)
     }
 
     if (

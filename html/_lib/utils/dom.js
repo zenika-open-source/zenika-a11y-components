@@ -21,13 +21,16 @@ export function id(node) {
 }
 
 /**
- * Turn a template string into a DOM fragment
+ * Turn a template string into a DOM fragment or DOM node
  *
- * @returns {DocumentFragment}
+ * If the DocumentFragment contain only one Node, only the node is returned
+ *
+ * @returns {Node|DocumentFragment}
  */
 export function html(strings, ...keys) {
-  const str = strings.map((substr, i) => substr + keys[i]).join('')
-  return document.createRange().createContextualFragment(str)
+  const str = strings.map((substr, i) => substr + (keys[i] || '')).join('')
+  const fragment = document.createRange().createContextualFragment(str)
+  return fragment.childNodes.length === 1 ? fragment.childNodes[0] : fragment
 }
 
 /**

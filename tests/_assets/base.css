@@ -1,0 +1,52 @@
+* { box-sizing: border-box; }
+*:first-child { margin-top: 0; }
+*:last-child { margin-bottom: 0; }
+
+html {
+  height: 100%;
+  padding: 2rem;
+  background: #555;
+}
+
+body {
+  font: 1.2rem/1.33 sans-serif;
+  height: 100%;
+  padding: 1rem;
+  margin: 0 auto;
+  max-width: 45rem;
+  background: #DDD;
+  border-radius: .2rem;
+}
+
+code {
+  display: inline-block;
+  font-size: .8em;
+  padding: 0 .25em;
+  border-radius: .2em;
+  background: #CCE;
+}
+
+button {
+  font-size: inherit;
+  cursor: pointer;
+}
+
+.warning {
+  padding: .5rem;
+  background: #EEC;
+  border-radius: .2rem;
+}
+
+.warning strong:first-child {
+  color: #980;
+}
+
+/* Add some flare to our (very) basic components ----------------------------------------------- */
+
+.dialog__main {
+  max-width: 80vw;
+  max-height: 80vh;
+  padding: .75rem;
+  border-radius: .5rem;
+  overflow: auto;
+}
