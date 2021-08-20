@@ -1,26 +1,40 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&family=Source+Sans+Pro:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
 * { box-sizing: border-box; }
 *:first-child { margin-top: 0; }
 *:last-child { margin-bottom: 0; }
 
 html {
   height: 100%;
-  padding: 2rem;
+  padding: 0 2rem;
   background: #555;
 }
 
 body {
-  font: 1.2rem/1.33 sans-serif;
-  height: 100%;
+  font: 1rem/1.33 'Source Sans Pro', sans-serif;
+  min-height: calc(100% - 4rem);
   padding: 1rem;
-  margin: 0 auto;
+  margin: 2rem auto;
   max-width: 45rem;
   background: #DDD;
   border-radius: .2rem;
 }
 
+h1 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  border-top: 1px solid #333;
+  padding: 1rem 0 0;
+}
+
 code {
   display: inline-block;
-  font-size: .8em;
+  font: .8em 'Source Code Pro', monospace;
   padding: 0 .25em;
   border-radius: .2em;
   background: #CCE;

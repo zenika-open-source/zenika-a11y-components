@@ -4,7 +4,8 @@
   "description": "The Zenika A11Y Component project provide a very basic and versatile design toolkit to design accessible components.",
   "type": "module",
   "scripts": {
-    "test": "npm run lint",
+    "test": "npm run lint && npm run e2e",
+    "e2e": "cucumber-js tests/features --esm --require tests/support/**/*.js -f html:tests/report.html -f progress-bar --format-options '{ \"snippetInterface\": \"async-await\" }' --publish-quiet",
     "lint": "eslint html/**/*.js"
   },
   "repository": {
@@ -21,6 +22,9 @@
   },
   "homepage": "https://github.com/zenika-open-source/zenika-a11y-components#readme",
   "devDependencies": {
-    "eslint": "^7.32.0"
+    "@cucumber/cucumber": "7.2.0",
+    "eslint": "^7.32.0",
+    "local-web-server": "^5.1.0",
+    "playwright": "^1.14.0"
   }
 }

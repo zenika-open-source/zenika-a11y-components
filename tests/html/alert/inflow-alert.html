@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Alert :: In-Flow</title>
+
+<link rel="stylesheet" href="../../styles/alert/alert.css">
+<link rel="stylesheet" href="../_assets/base.css">
+
+<h1>Alert :: In flow test</h1>
+
+<p>
+  For all alerts in this test suite, clicking on them will close them.</p>
+
+
+<h2>Alert is already in the DOM</h2>
+
+<p>
+  In this test, the alert box DOM nodes are already in the DOM with their content pre-filled.</p>
+
+<div id="a1" role="alert" class="alert">This alert was set in the DOM and it appears before the button that open it</div>
+<button id="b1" class="alert__open">Open Alert Before</button>
+<button id="b2" class="alert__open">Open Alert After</button>
+<div id="a2" role="alert" class="alert">This alert was set in the DOM and it appears after the button that open it</div>
+
+<script type="module">
+  import * as dom from '../../html/_lib/utils/dom.js'
+  import { Alert } from '../../html/alert/alert.js'
+
+  const a1 = new Alert(dom.$id('a1'))
+  a1.node.addEventListener('click', () => a1.close())
+  dom.$id('b1').addEventListener('click', () => a1.open())
+
+  const a2 = new Alert(dom.$id('a2'))
+  a2.node.addEventListener('click', () => a2.close())
+  dom.$id('b2').addEventListener('click', () => a2.open())
+</script>
+
+
+<h2>Alert is already in the DOM but without content</h2>
+
+<p>
+  In this test, the alert box are already in the DOM but their content is set when opening</p>
+
+<div id="a3" role="alert" class="alert"></div>
+<button id="b3" class="alert__open">Open Alert Before</button>
+<button id="b4" class="alert__open">Open Alert After</button>
+<div id="a4" role="alert" class="alert"></div>
+
+<script type="module">
+  import * as dom from '../../html/_lib/utils/dom.js'
+  import { Alert } from '../../html/alert/alert.js'
+
+  const count = { a3: 0, a4: 0 }
+
+  const a3 = new Alert(dom.$id('a3'))
+  a3.node.addEventListener('click', () => a3.close())
+  dom.$id('b3').addEventListener('click', () => a3.open(`This alert content has been set with a script ${count.a3 += 1} time(s)`))
+
+  const a4 = new Alert(dom.$id('a4'))
+  a4.node.addEventListener('click', () => a4.close())
+  dom.$id('b4').addEventListener('click', () => a4.open(`This alert content has been set with a script ${count.a4 += 1} time(s)`))
+</script>
+
+
+<h2>Alert is dynamicaly inserted in the DOM</h2>
+
+<p>
+  In this test, the alert box are inserted in the DOM when opening and are removed once closed</p>
+
+<button id="b5" class="alert__open">Open Alert Before</button>
+<button id="b6" class="alert__open">Open Alert After</button>
+
+<script type="module">
+  import * as dom from '../../html/_lib/utils/dom.js'
+  import { Alert } from '../../html/alert/alert.js'
+
+  // Each time we click on one of this button we create a new alert.
+  const before = dom.$id('b5')
+  const after = dom.$id('b6')
+
+  before.addEventListener('click', () => {
+    const alert = new Alert(dom.html`<div>`)
+    alert.node.addEventListener('click', () => {
+      alert.close().then(() => alert.node.remove())
+    })
+
+    before.insertAdjacentElement('beforebegin', alert.node)
+
+    alert.open(`This alert has been included before the opening button (${dom.id(alert.node)})`)
+  })
+
+  after.addEventListener('click', () => {
+    const alert = new Alert(dom.html`<div>`)
+    alert.node.addEventListener('click', () => {
+      alert.close().then(() => alert.node.remove())
+    })
+
+    after.insertAdjacentElement('afterend', alert.node)
+
+    alert.open(`This alert has been included after the opening button (${dom.id(alert.node)})`)
+  })
+</script>
