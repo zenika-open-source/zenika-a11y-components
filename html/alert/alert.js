@@ -63,19 +63,20 @@ export class Alert {
     await tick()
     return this
   }
-
-  /**
-   * The name of the CSS class that identify an alert.
-   * @type {string}
-   */
-  static ALERT_CLASS_ROOT = 'alert'
-
-  /**
-   * The name of the CSS class that indicates an alert is open.
-   * @type {string}
-   */
-  static ALERT_CLASS_OPEN = 'alert--open'
 }
+
+/**
+ * The name of the CSS class that identify an alert.
+ * @type {string}
+ */
+Alert.ALERT_CLASS_ROOT = 'alert'
+
+/**
+ * The name of the CSS class that indicates an alert is open.
+ * @type {string}
+ */
+Alert.ALERT_CLASS_OPEN = 'alert--open'
+
 
 export class AlertNotification extends Alert {
   constructor(node) {
@@ -83,13 +84,13 @@ export class AlertNotification extends Alert {
 
     this.node.classList.add(AlertNotification.ALERT_CLASS_ROOT)
   }
-
-  /**
-   * The name of the CSS class that identify an alert.
-   * @type {string}
-   */
-  static ALERT_CLASS_ROOT = 'alert--notification'
 }
+
+/**
+ * The name of the CSS class that identify an alert.
+ * @type {string}
+ */
+AlertNotification.ALERT_CLASS_ROOT = 'alert--notification'
 
 export class AlertDialog extends Dialog {
   constructor(node) {
@@ -104,7 +105,7 @@ export class AlertDialog extends Dialog {
     this.contentNode = dom.$cls(Dialog.DIALOG_CLASS_CONTENT, mainNode)
 
     if (!this.contentNode) {
-      this.contentNode = (dom.html`<div class="${Dialog.DIALOG_CLASS_CONTENT}"></div>`).firstElementChild
+      this.contentNode = (dom.html`<div class="${Dialog.DIALOG_CLASS_CONTENT}"></div>`)
       mainNode.prepend(this.contentNode)
     }
 
@@ -164,16 +165,16 @@ export class AlertDialog extends Dialog {
       }
     }
   }
-
-  /**
-   * The name of the CSS class that identify an alert dialog box.
-   * @type {string}
-   */
-  static DIALOG_CLASS_ROOT = 'dialog--alert'
-
-  /**
-   * The name of the CSS class that identify the main area of the dialog box.
-   * @type {string}
-   */
-  static DIALOG_CLASS_MAIN = 'dialog__main--alert'
 }
+
+/**
+ * The name of the CSS class that identify an alert dialog box.
+ * @type {string}
+ */
+AlertDialog.DIALOG_CLASS_ROOT = 'dialog--alert'
+
+/**
+ * The name of the CSS class that identify the main area of the dialog box.
+ * @type {string}
+ */
+AlertDialog.DIALOG_CLASS_MAIN = 'dialog__main--alert'

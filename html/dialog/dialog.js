@@ -88,31 +88,31 @@ export default class Dialog {
   static getOpen() {
     return OPEN_DIALOG
   }
-
-  /**
-   * The name of the CSS class that identify a dialog box.
-   * @type {string}
-   */
-  static DIALOG_CLASS_ROOT = 'dialog'
-
-  /**
-   * The name of the CSS class that indicates a dialog is open.
-   * @type {string}
-   */
-  static DIALOG_CLASS_OPEN = 'dialog--open'
-
-  /**
-   * The name of the CSS class that identify the main area of the dialog box.
-   * @type {string}
-   */
-   static DIALOG_CLASS_MAIN = 'dialog__main'
-
-   /**
-    * The name of the CSS class that identify the content of the dialog box.
-    * @type {string}
-    */
-   static DIALOG_CLASS_CONTENT = 'dialog__content'
 }
+
+/**
+ * The name of the CSS class that identify a dialog box.
+ * @type {string}
+ */
+Dialog.DIALOG_CLASS_ROOT = 'dialog'
+
+/**
+ * The name of the CSS class that indicates a dialog is open.
+ * @type {string}
+ */
+Dialog.DIALOG_CLASS_OPEN = 'dialog--open'
+
+/**
+ * The name of the CSS class that identify the main area of the dialog box.
+ * @type {string}
+ */
+Dialog.DIALOG_CLASS_MAIN = 'dialog__main'
+
+/**
+ * The name of the CSS class that identify the content of the dialog box.
+ * @type {string}
+ */
+Dialog.DIALOG_CLASS_CONTENT = 'dialog__content'
 
 // Let's make sure that "Escape" close any open dialog
 document.addEventListener('keyup', (evt) => {
