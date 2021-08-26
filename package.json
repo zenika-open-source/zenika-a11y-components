@@ -4,9 +4,10 @@
   "description": "The Zenika A11Y Component project provide a very basic and versatile design toolkit to design accessible components.",
   "type": "module",
   "scripts": {
-    "test": "npm run lint && npm run e2e",
-    "e2e": "cucumber-js tests/features --esm --require tests/support/**/*.js -f html:tests/report.html -f progress-bar --format-options '{ \"snippetInterface\": \"async-await\" }' --publish-quiet",
-    "lint": "eslint html/**/*.js"
+    "test": "npm run test:lint && npm run test:unit && npm run test:e2e",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:e2e": "cucumber-js tests/features --esm --require tests/support/**/*.js -f html:tests/report.html -f progress-bar --format-options '{ \"snippetInterface\": \"async-await\" }' --publish-quiet",
+    "test:lint": "eslint html/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,14 @@
   "homepage": "https://github.com/zenika-open-source/zenika-a11y-components#readme",
   "devDependencies": {
     "@cucumber/cucumber": "7.2.0",
+    "@testing-library/dom": "^8.2.0",
+    "@testing-library/jest-dom": "^5.14.1",
+    "@testing-library/user-event": "^13.2.1",
     "eslint": "^7.32.0",
+    "eslint-plugin-jest-dom": "^3.9.0",
+    "jest": "^27.0.6",
+    "jest-axe": "^5.0.1",
+    "jest-extended": "^0.11.5",
     "local-web-server": "^5.1.0",
     "playwright": "^1.14.0"
   }
