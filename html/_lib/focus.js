@@ -1,79 +1,78 @@
-const FOCUS_TRAP = new WeakMap()
+// Focus trap state -----------------------------------------------------------
+let FOCUS_TRAP = null
+let FOCUS_DIRECTION = 'first'
 
-/**
- * Try to focus the first focusable children of a given node
+// Get focus direction out of keyboard events ---------------------------------
+document.addEventListener('keydown', (e) => e.key === 'Tab'
+  && (FOCUS_DIRECTION = (e.shiftKey && 'last') || 'first'))
+document.addEventListener('keyup', (e) => e.key === 'Tab'
+  && (FOCUS_DIRECTION = 'first'))
+
+// Utils ----------------------------------------------------------------------
+/** Try to focus a child on a given node.
  *
- * If the direction is set to `first` we try to focus the first children available down to the last
- * If the direction is set to `last` we try to focus the last children available up to the first
- *
- * If no children is focusable, return `false`.
- *
- * @param {HTMLElement} node The root node where we want to focus a children
- * @param {string} [direction] The direction to get the focus, either `first` (default) or `last`
- * @return {boolean}
+ * @param {HTMLElement} node
+ *   The parent where to focus a child
+ * @param {`first`|`last`} firstOrLast
+ *   The child to focus, either the first or the last focusable one
+ * @returns {boolean}
  */
-export function focusChild(node, direction = 'first') {
-  let children = Array.from(node.children)
+function focusChild(node, firstOrLast) {
+  const children = Array.from(node.children)
 
-  if (direction === 'last') {
-    children = children.reverse()
+  if (firstOrLast === 'last') {
+    children.reverse()
   }
 
-  for (const child of children) {
+  return children.some((child) => (
     child.focus()
-
-    if (document.activeElement === child) {
-      return true
-    }
-
-    if (focusChild(child, direction)) {
-      return true
-    }
-  }
-
-  return false
+    || document.activeElement === child
+    || focusChild(child, firstOrLast)
+  ))
 }
 
-/**
- * Lock the focus inside the given node (only children from that node can get the focus)
- * @param {HTMLElement} node
+// Main API -------------------------------------------------------------------
+/** Release the focus from the current trap
+ * @param {boolean} restoreOriginalFocus
  */
-export function trapFocus(node) {
-  const data = {
-    origin: document.activeElement,
-    onfocusin(evt) {
-      if (!node.contains(evt.target)) {
-        if (evt.relatedTarget === node) {
-          focusChild(node, 'last')
-        } else {
-          focusChild(node, 'first')
-        }
+export function release(restoreOriginalFocus) {
+  FOCUS_TRAP?.release(restoreOriginalFocus)
+}
+
+/** Trap the focus inside a given node
+ *
+ * @param {HTMLElement} node The node where to trap the focus
+ */
+export function trap(node) {
+  if (FOCUS_TRAP) {
+    throw new Error('The focus is already trapped, you must release it first')
+  }
+
+  const originalFocus = document.activeElement
+  const originalTabIndex = node.tabIndex
+  node.tabIndex = 0
+
+  if (!focusChild(node, FOCUS_DIRECTION)) {
+    node.focus()
+  }
+
+  const focusin = (e) => (
+    !node.contains(e.target)
+    && (focusChild(node, FOCUS_DIRECTION) || node.focus())
+  )
+
+  document.addEventListener('focus', focusin, true)
+
+  FOCUS_TRAP = {
+    release(restoreOriginalFocus) {
+      node.tabIndex = originalTabIndex
+      document.removeEventListener('focus', focusin, true)
+
+      if (restoreOriginalFocus) {
+        originalFocus.focus()
       }
+
+      FOCUS_TRAP = null
     }
   }
-
-  FOCUS_TRAP.set(node, data)
-
-  node.focus()
-  document.addEventListener('focusin', data.onfocusin)
-}
-
-/**
- * Release a focus trap from the given node (the focus can now be set outside that node)
- * @param {HTMLElement} node
- */
-export function releaseFocus(node) {
-  if (!FOCUS_TRAP.has(node)) {
-    return
-  }
-
-  const data = FOCUS_TRAP.get(node)
-
-  document.removeEventListener('focusin', data.onfocusin)
-
-  if (data.origin) {
-    data.origin.focus()
-  }
-
-  FOCUS_TRAP.delete(node)
 }
