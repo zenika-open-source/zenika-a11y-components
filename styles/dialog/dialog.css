@@ -1,26 +1,56 @@
-:root {
-  --dialog-backdrop: #CCCCCCCC;
-  --dialog-background: white;
-}
-
+/* DIALOG OVERLAY (.dialog) ------------------------------------------------ */
+/* The `.dialog` element represent the whole dialog overlay. It will always
+ * contain a `[role="dialog"]` element. The wrapping of `[role="dialog"]` with
+ * `.dialog` is done automatically with JS. */
 .dialog {
-  display: none;
-
+  /**
+   * A dialog box must be positioned and in this case, it is handled via JS.
+   * JS is taking over the properties `position`, `top`, `left`, `width`
+   * height`. Be careful if you want to overload those properties for this
+   * selector.
+   *
+   * Also remember that JS can create or move `.dialog` element anywhere,
+   * so never assume any parents while creating selectors with `.dialog`.
+   * Always assume `.dialog` is a root selector.
+   */
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
 
-  background: var(--dialog-backdrop, black);
-}
-
-.dialog--open {
+  /* There are no hard rules here, but usualy the visual dialog
+   * `[role="dialog"]` box is centered inside its overlay */
   display: flex;
   align-items: center;
   justify-content: center;
+
+  /* This is how we materialise the backdrop,
+   * feel free to overload with your own color/effect */
+  background: #CCCCCCCC; /* translucent grey */
 }
 
-.dialog__main {
-  background: var(--dialog-background, white);
+/**
+ * The `hidden` attribute indicate that the modal is fully closed (not visible
+ * nor readable by screen reader). It is possible to use the class `.hidden`
+ * to perform a soft hidding (invisible but still readable by screen reader)
+ * even if we have no default behavior for this here.
+ */
+.dialog[hidden] {
+  display: none;
+}
+
+/* DIALOG CONTENT BOX ([role="dialog"]) ------------------------------------ */
+[role="dialog"] {
+  /**
+   * This is how we materialise the modal background, feel free to overload
+   * with your own color/effect. Usually, color and background should be the
+   * same as those from your body and you should take care to create cases for
+   * the `prefers-color-scheme` and `prefers-contrast` media queries.
+   */
+  background: white; /* solid white */
+}
+
+/**
+ * Any dialog box that is not yet wrap inside a `.dialog` overlay
+ * is hidden by default until it is properly wrapped with JS
+ */
+:not(.dialog) > [role="dialog"] {
+  display: none;
 }

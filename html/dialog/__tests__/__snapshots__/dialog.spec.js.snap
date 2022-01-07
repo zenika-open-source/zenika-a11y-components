@@ -1,0 +1,138 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog Dialog.close() 1`] = `
+<div
+  aria-hidden="true"
+  class="dialog overlay hidden"
+  hidden=""
+  style="position: fixed; left: 0px; top: 0px; width: 1024px; height: 768px;"
+>
+  <div
+    aria-label="A nice label for testing"
+    aria-modal="true"
+    role="dialog"
+    tabindex="-1"
+  >
+    
+        
+    <strong>
+      Will move
+    </strong>
+     into an overlay
+      
+  </div>
+</div>
+`;
+
+exports[`Dialog Dialog::hide() 1`] = `
+<div
+  aria-hidden="true"
+  class="dialog overlay hidden"
+  hidden=""
+  style="position: fixed; left: 0px; top: 0px; width: 1024px; height: 768px;"
+>
+  <div
+    aria-label="A nice label for testing"
+    aria-modal="true"
+    role="dialog"
+    tabindex="-1"
+  >
+    
+        
+    <strong>
+      Will move
+    </strong>
+     into an overlay
+      
+  </div>
+</div>
+`;
+
+exports[`Dialog Dialog::show() 1`] = `
+<div
+  class="dialog overlay"
+  style="position: fixed; left: 0px; top: 0px; width: 1024px; height: 768px;"
+>
+  <div
+    aria-label="A nice label for testing"
+    aria-modal="true"
+    role="dialog"
+    tabindex="0"
+  >
+    
+        
+    <strong>
+      Will move
+    </strong>
+     into an overlay
+      
+  </div>
+</div>
+`;
+
+exports[`Dialog Keyboard ESC close dialog boxes 1`] = `
+<div
+  aria-hidden="true"
+  class="dialog overlay hidden"
+  hidden=""
+  style="position: fixed; left: 0px; top: 0px; width: 1024px; height: 768px;"
+>
+  <div
+    aria-label="A nice label for testing"
+    aria-modal="true"
+    role="dialog"
+    tabindex="-1"
+  >
+    
+        
+    <strong>
+      Will move
+    </strong>
+     into an overlay
+      
+  </div>
+</div>
+`;
+
+exports[`Dialog new Dialog(node) // With NO aria-label 1`] = `
+<div
+  aria-hidden="true"
+  class="dialog overlay hidden"
+  hidden=""
+>
+  <div
+    aria-modal="true"
+    role="dialog"
+  >
+    
+        
+    <strong>
+      Will move
+    </strong>
+     into an overlay
+      
+  </div>
+</div>
+`;
+
+exports[`Dialog new Dialog(node[aria-label]) 1`] = `
+<div
+  aria-hidden="true"
+  class="dialog overlay hidden"
+  hidden=""
+>
+  <div
+    aria-label="A nice label for testing"
+    aria-modal="true"
+    role="dialog"
+  >
+    
+        
+    <strong>
+      Will move
+    </strong>
+     into an overlay
+      
+  </div>
+</div>
+`;
