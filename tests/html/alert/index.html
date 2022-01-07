@@ -3,7 +3,7 @@
 <meta charset="utf-8">
 <title>Alert :: In-Flow</title>
 
-<link rel="stylesheet" href="../../styles/alert/alert.css">
+<link rel="stylesheet" href="../../../styles/alert/alert.css">
 <link rel="stylesheet" href="../_assets/base.css">
 
 <h1>Alert :: In flow test</h1>
@@ -23,15 +23,15 @@
 <div id="a2" role="alert" class="alert">This alert was set in the DOM and it appears after the button that open it</div>
 
 <script type="module">
-  import * as dom from '../../html/_lib/utils/dom.js'
-  import { Alert } from '../../html/alert/alert.js'
+  import * as dom from '../../../html/_lib/utils/dom.js'
+  import { Alert } from '../../../html/alert/alert.js'
 
   const a1 = new Alert(dom.$id('a1'))
-  a1.node.addEventListener('click', () => a1.close())
+  a1.node.addEventListener('click', () => a1.close(true))
   dom.$id('b1').addEventListener('click', () => a1.open())
 
   const a2 = new Alert(dom.$id('a2'))
-  a2.node.addEventListener('click', () => a2.close())
+  a2.node.addEventListener('click', () => a2.close(true))
   dom.$id('b2').addEventListener('click', () => a2.open())
 </script>
 
@@ -47,8 +47,8 @@
 <div id="a4" role="alert" class="alert"></div>
 
 <script type="module">
-  import * as dom from '../../html/_lib/utils/dom.js'
-  import { Alert } from '../../html/alert/alert.js'
+  import * as dom from '../../../html/_lib/utils/dom.js'
+  import { Alert } from '../../../html/alert/alert.js'
 
   const count = { a3: 0, a4: 0 }
 
@@ -71,8 +71,8 @@
 <button id="b6" class="alert__open">Open Alert After</button>
 
 <script type="module">
-  import * as dom from '../../html/_lib/utils/dom.js'
-  import { Alert } from '../../html/alert/alert.js'
+  import * as dom from '../../../html/_lib/utils/dom.js'
+  import { Alert } from '../../../html/alert/alert.js'
 
   // Each time we click on one of this button we create a new alert.
   const before = dom.$id('b5')
