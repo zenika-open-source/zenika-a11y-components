@@ -61,10 +61,11 @@ button {
 
 /* Add some flare to our (very) basic components ----------------------------------------------- */
 
-.dialog__main {
-  max-width: 80vw;
+[role='dialog'] {
+  max-width: 40rem;
   max-height: 80vh;
   padding: .75rem;
   border-radius: .5rem;
   overflow: auto;
+  box-shadow: 2px 3px 6px #0003;
 }

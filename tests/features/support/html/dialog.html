@@ -22,7 +22,7 @@
 
     const open = (dialog, i) => {
       if (e.target.matches(`.openDialog${i+1}`)) {
-        return dialog.open()
+        return dialog.show()
       }
     }
 
@@ -44,17 +44,15 @@
       That dialog box follow the regular Dialog box pattern and use the
       <code>aria-label</code> attribute to define its accessible label.</p>
 
-    <div role="dialog" class="dialog"
+    <div role="dialog"
       aria-label="A regular modal"
       aria-modal="true"
       tabindex="0">
 
-      <section class="dialog__main">
-        <p>This is Dialog 1.</p>
+      <p>This is Dialog 1.</p>
 
-        <button class="openDialog2">Open Dialog 2</button>
-        <button class="closeDialog">Close Dialog 1</button>
-      </section>
+      <button class="openDialog2">Open Dialog 2</button>
+      <button class="closeDialog">Close Dialog 1</button>
     </div>
 
     <button class="openDialog1">Open Dialog 1</button>
@@ -69,17 +67,15 @@
       <code>aria-labelledby</code> attribute to define its accessible label
       by referencing some inner content of the dialog box.</p>
 
-    <div role="dialog" class="dialog"
+    <div role="dialog"
       aria-labelledby="desc"
       aria-modal="true"
       tabindex="0">
 
-      <section class="dialog__main">
-        <p>This is a <span id="desc">self described modal</span>.</p>
+      <p>This is a <span id="desc">self described modal</span>.</p>
 
-        <button class="openDialog1">Open Dialog 1</button>
-        <button class="closeDialog">Close Dialog 2</button>
-      </section>
+      <button class="openDialog1">Open Dialog 1</button>
+      <button class="closeDialog">Close Dialog 2</button>
     </div>
 
     <button class="openDialog2">Open Dialog 2</button>
@@ -97,12 +93,10 @@
     <div role="dialog"
       aria-label="A sparse modal">
 
-      <section class="dialog__main">
-        <p>This is a <span id="desc">self described modal</span>.</p>
+      <p>This is a <span id="desc">self described modal</span>.</p>
 
-        <button class="openDialog1">Open Dialog 1</button>
-        <button class="closeDialog">Close Dialog 3</button>
-      </section>
+      <button class="openDialog1">Open Dialog 1</button>
+      <button class="closeDialog">Close Dialog 3</button>
     </div>
 
     <button class="openDialog3">Open Dialog 3</button>
