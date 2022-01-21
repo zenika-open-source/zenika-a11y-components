@@ -6,7 +6,7 @@ import Dialog from '../dialog'
 
 const event = userEvent.default
 const { axe } = jestAxe
-jest.spyOn(console, 'error')
+jest.spyOn(console, 'error').mockImplementation(() => {})
 
 describe('Dialog', () => {
   let node

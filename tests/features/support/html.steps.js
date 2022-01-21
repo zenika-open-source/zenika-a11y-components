@@ -49,8 +49,9 @@ async function pressKey(key) {
 }
 
 async function isDialogClosed() {
-  await expect(this.dialog).toBeHidden()
-  await expect(this.dialog).toHaveCSS('display', 'none')
+  const dialogContainer  = this.dialog.locator('..')
+  await expect(dialogContainer).toBeHidden()
+  await expect(dialogContainer).toHaveCSS('display', 'none')
 }
 
 async function isADialogOpen() {

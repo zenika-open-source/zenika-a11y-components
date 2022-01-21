@@ -51,10 +51,7 @@ export function trap(node) {
   const originalFocus = document.activeElement
   const originalTabIndex = node.tabIndex
   node.tabIndex = 0
-
-  if (!focusChild(node, FOCUS_DIRECTION)) {
-    node.focus()
-  }
+  node.focus()
 
   const focusin = (e) => (
     !node.contains(e.target)
