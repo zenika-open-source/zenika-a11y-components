@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dialog base test</title>
+
+<link rel="stylesheet" href="../_assets/styles.css">
+<link rel="stylesheet" href="../../../../styles/dialog/dialog.css">
+
+<script type="module">
+  import * as dom from '../../../../html/_lib/utils/dom.js'
+  import Dialog from '../../../../html/dialog/dialog.js'
+
+  const dialogs = dom
+    .$$('[role="dialog"]')
+    .map((node) => new Dialog(node))
+
+  document.addEventListener(`click`, (e) => {
+    if (e.target.matches(`.closeDialog`)) {
+      return Dialog.close()
+    }
+
+    const open = (dialog, i) => {
+      if (e.target.matches(`.openDialog${i+1}`)) {
+        return dialog.open()
+      }
+    }
+
+    dialogs.some(open)
+  })
+</script>
+
+<main>
+  <h1>Dialog boxes</h1>
+
+  <p>
+    This page allows to test various way to define Dialog boxes
+    and can be used to test their behaviors</p>
+
+  <section>
+    <h2>Regular dialog box</h2>
+
+    <p>
+      That dialog box follow the regular Dialog box pattern and use the
+      <code>aria-label</code> attribute to define its accessible label.</p>
+
+    <div role="dialog" class="dialog"
+      aria-label="A regular modal"
+      aria-modal="true"
+      tabindex="0">
+
+      <section class="dialog__main">
+        <p>This is Dialog 1.</p>
+
+        <button class="openDialog2">Open Dialog 2</button>
+        <button class="closeDialog">Close Dialog 1</button>
+      </section>
+    </div>
+
+    <button class="openDialog1">Open Dialog 1</button>
+    or <a href="#" class="openDialog1">Open Dialog 1</a>
+  </section>
+
+  <section>
+    <h2>Self described dialog box</h2>
+
+    <p>
+      That dialog box follow the regular Dialog box pattern and use the
+      <code>aria-labelledby</code> attribute to define its accessible label
+      by referencing some inner content of the dialog box.</p>
+
+    <div role="dialog" class="dialog"
+      aria-labelledby="desc"
+      aria-modal="true"
+      tabindex="0">
+
+      <section class="dialog__main">
+        <p>This is a <span id="desc">self described modal</span>.</p>
+
+        <button class="openDialog1">Open Dialog 1</button>
+        <button class="closeDialog">Close Dialog 2</button>
+      </section>
+    </div>
+
+    <button class="openDialog2">Open Dialog 2</button>
+    or <a href="#" class="openDialog2">Open Dialog 2</a>
+  </section>
+
+  <section>
+    <h2>Simplified dialog box</h2>
+
+    <p>
+      That dialog box follow a minium HTML Dialog box pattern (<em>only using the
+      <code>role="dialog"</code> attribute and let JS filling the other required ones</em>)
+      and use the <code>aria-label</code> attribute to define its accessible label.</p>
+
+    <div role="dialog"
+      aria-label="A sparse modal">
+
+      <section class="dialog__main">
+        <p>This is a <span id="desc">self described modal</span>.</p>
+
+        <button class="openDialog1">Open Dialog 1</button>
+        <button class="closeDialog">Close Dialog 3</button>
+      </section>
+    </div>
+
+    <button class="openDialog3">Open Dialog 3</button>
+    or <a href="#" class="openDialog3">Open Dialog 3</a>
+  </section>
+</main>
+</html>

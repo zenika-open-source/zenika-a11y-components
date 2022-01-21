@@ -1,0 +1,5 @@
+# Relax some eslint rules for tests
+rules:
+  func-names: off
+  new-cap: off
+  require-await: off

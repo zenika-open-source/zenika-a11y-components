@@ -1,4 +1,3 @@
-/* eslint-disable new-cap */
 import assert from 'assert'
 import { Given, Then } from '@cucumber/cucumber'
 
