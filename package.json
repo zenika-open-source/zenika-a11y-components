@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "test": "npm run test:lint && npm run test:unit && npm run test:e2e",
-    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:unit": "NODE_OPTIONS=--experimental-vm-modules jest --passWithNoTests",
     "test:e2e": "cucumber-js tests/features",
     "test:lint": "eslint html/**/*.js"
   },
