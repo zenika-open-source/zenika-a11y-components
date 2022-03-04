@@ -2,7 +2,7 @@
 
 Une boite de dialogue, ou boite modale, ou Pop-in, est un moyen de créer un workflow secondaire qui interrompe le workflow principale de la page. Ce workflow secondaire doit être terminé (ou abandonné) avant de pouvoir reprendre le workflow principale.
 
-A cause de leur nature invasive, les boites de dialogue doivent être utilisé prudemment.
+A cause de leur nature invasive, les boites de dialogue doivent êtres utilisées prudemment.
 
 > **NOTE:** _Si vous voulez juste afficher un message qui a besoin d'être
 > validé formellement, vous devriez plutôt utiliser une boite d'alerte qui sera
