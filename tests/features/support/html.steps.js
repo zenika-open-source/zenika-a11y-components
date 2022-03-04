@@ -79,12 +79,12 @@ async function isButtonFocused() {
 }
 
 // GHERKIN Binding ------------------------------------------------------------
-Given('a page with some dialog boxes',                loadDialogPage)
-Given('a button that open a Dialog box',              setAButtonToOpenADialog)
-Given('an open Dialog box',                           setAnOpenDialog)
-Given('an element that had the focus',                setAnElementWithFocus)
-Given('a button that open another Dialog box',        setAButtonToOpenAnotherDialog)
-Given('an open Dialog box, which now have the focus', setOpenDialogAfterFocus)
+Given('a page with some dialog boxes',               loadDialogPage)
+Given('a button that open a Dialog box',             setAButtonToOpenADialog)
+Given('an open Dialog box',                          setAnOpenDialog)
+Given('an element that had the focus',               setAnElementWithFocus)
+Given('a button that open another Dialog box',       setAButtonToOpenAnotherDialog)
+Given('an open Dialog box, which now has the focus', setOpenDialogAfterFocus)
 
 When('I activate the button',        activateTheButton)
 When('I activate its close button',  activateItsCloseButton)

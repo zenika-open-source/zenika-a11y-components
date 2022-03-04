@@ -28,8 +28,8 @@ Feature: Dialog
      Then the open Dialog box is closed
       And a different Dialog box is open
 
-  Scenario: Restore focus when Dialog is closed
+  Scenario: Restore the focus when a Dialog box is closed
     Given an element that had the focus
-      And an open Dialog box, which now have the focus
+      And an open Dialog box, which now has the focus
      When I close the Dialog box
      Then the element regain the focus
