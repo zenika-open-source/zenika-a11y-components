@@ -19,7 +19,22 @@ npm run test:unit
 npm run test:e2e
 ```
 
-# Writing tests with JEST
+## Writing end to end scenarios
+
+End to end tests are defined using the [Gherkin language](https://cucumber.io/docs/gherkin/reference/) inside `*.feature` files (within the `tests/features` folder)
+
+Under the hood we use [CucumberJS](https://github.com/cucumber/cucumber-js/#readme) to run the tests and we use [Playwright](https://playwright.dev/docs/intro) to perform real browser interaction.
+
+If you need to create new steps, you must set them inside a `tests/features/support/*.steps.js` file.
+
+We currently have two steps file:
+
+ - `generic.steps.js` for all reusable steps, no matter the implementation of the components.
+ - `html.steps.js` craft for testing components, assuming a raw HTML/JS implementation.
+
+In the future we expect to have more steps files, at least one for each framework we want to support.
+
+## Writing tests with JEST
 
 Writing tests for any JS code has to be made with [Jest](https://jestjs.io)
 
