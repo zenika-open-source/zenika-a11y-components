@@ -1,6 +1,7 @@
 // Focus trap state -----------------------------------------------------------
 let FOCUS_TRAP = null
 let FOCUS_DIRECTION = 'first'
+let FOCUS_FN = null
 
 // Get focus direction out of keyboard events ---------------------------------
 document.addEventListener('keydown', (e) => e.key === 'Tab'
@@ -25,7 +26,7 @@ function focusChild(node, firstOrLast) {
   }
 
   return children.some((child) => (
-    child.focus()
+    FOCUS_FN.call(child)
     || document.activeElement === child
     || focusChild(child, firstOrLast)
   ))
@@ -36,7 +37,7 @@ function focusChild(node, firstOrLast) {
  * @param {boolean} restoreOriginalFocus
  */
 export function release(restoreOriginalFocus) {
-  FOCUS_TRAP?.release(restoreOriginalFocus)
+  FOCUS_TRAP?.(restoreOriginalFocus) // eslint-disable-line new-cap
 }
 
 /** Trap the focus inside a given node
@@ -48,28 +49,32 @@ export function trap(node) {
     throw new Error('The focus is already trapped, you must release it first')
   }
 
+  // Programmatic focus does not trigger focus events, so
+  // we need to make sure it won't mess up with our trap.
+  FOCUS_FN = HTMLElement.prototype.focus
+  HTMLElement.prototype.focus = () => {}
+
   const originalFocus = document.activeElement
   const originalTabIndex = node.tabIndex
   node.tabIndex = 0
-  node.focus()
+  FOCUS_FN.call(node)
 
   const focusin = (e) => (
     !node.contains(e.target)
-    && (focusChild(node, FOCUS_DIRECTION) || node.focus())
+    && (focusChild(node, FOCUS_DIRECTION) || FOCUS_FN.call(node))
   )
 
   document.addEventListener('focus', focusin, true)
 
-  FOCUS_TRAP = {
-    release(restoreOriginalFocus) {
-      node.tabIndex = originalTabIndex
-      document.removeEventListener('focus', focusin, true)
+  FOCUS_TRAP = (restoreOriginalFocus) => {
+    HTMLElement.prototype.focus = FOCUS_FN
+    node.tabIndex = originalTabIndex
+    document.removeEventListener('focus', focusin, true)
 
-      if (restoreOriginalFocus) {
-        originalFocus.focus()
-      }
-
-      FOCUS_TRAP = null
+    if (restoreOriginalFocus) {
+      FOCUS_FN.call(originalFocus)
     }
+
+    FOCUS_TRAP = null
   }
 }
