@@ -28,22 +28,24 @@ jobs:
     needs: unit-tests
     strategy:
       matrix:
-        # Windows and macOS environnement are not super stable
-        os: [windows-latest, macOS-latest]
-        experimental: [true]
-        include:
-          - os: ubuntu-latest
-            experimental: false
+        os: [ubuntu-latest, windows-latest, macOS-latest]
     runs-on: ${{ matrix.os }}
-    continue-on-error: ${{ matrix.experimental }}
+    outputs:
+      linux: ${{ steps.e2e.outputs.ubuntu-latest }}
+      win:   ${{ steps.e2e.outputs.windows-latest }}
+      macos: ${{ steps.e2e.outputs.macOS-latest }}
+    continue-on-error: true
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2
         with:
           cache: 'npm'
       - run: npm ci
-      - run: npm run test:e2e
+      - id: e2e
+        run: npm run test:e2e && echo "::set-output name=${{ matrix.os }}::OK"
   done:
     name: All tests done
-    needs: [linter, e2e-tests]
-    run: true
+    needs: e2e-tests
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.e2e-tests.outputs.linux }} ${{ needs.e2e-tests.outputs.win }} ${{ needs.e2e-tests.outputs.macos }}
