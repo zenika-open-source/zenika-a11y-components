@@ -93,8 +93,8 @@ This design toolkit is a foundational work made to demonstrate Zenika exceptiona
   - [LitElement](https://lit-element.polymer-project.org/) ([Polymer](https://www.polymer-project.org/))
   - [AMP](https://amp.dev/)
 - **A11Y Linter and testing tools**
-  - [Axe core](https://github.com/dequelabs/axe-core)
-    - [Jest Axe](https://github.com/nickcolley/jest-axe)
+  - [Axe core](https://github.com/dequelabs/axe-core) (used by [Lighthouse](https://github.com/GoogleChrome/lighthouse))
+    - [Jest Axe](https://github.com/nickcolley/jest-axe) for use with the [Jest](https://jestjs.io/) testing framework
   - [WAVE](https://wave.webaim.org/)
   - [ARC](https://www.tpgi.com/arc-platform/api/)
   - [Codelyzer](http://codelyzer.com/) (_TypeScript, Angular_)
