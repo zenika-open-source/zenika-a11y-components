@@ -28,9 +28,12 @@ jobs:
     needs: unit-tests
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
         # Windows and macOS environnement are not super stable
-        experimental: [false, true, true]
+        os: [windows-latest, macOS-latest]
+        experimental: [true]
+        include:
+          - os: ubuntu-latest
+            experimental: false
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     steps:
@@ -40,3 +43,7 @@ jobs:
           cache: 'npm'
       - run: npm ci
       - run: npm run test:e2e
+  done:
+    name: All tests done
+    needs: [linter, e2e-tests]
+    run: true
