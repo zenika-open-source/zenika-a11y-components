@@ -28,9 +28,12 @@ jobs:
     needs: unit-tests
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macOS-latest]
+        os: [windows-latest, macOS-latest]
         # Windows and macOS environnement are not super stable
-        experimental: [false, true, true]
+        experimental: [true]
+        include:
+          - os: ubuntu-latest
+            experimental: false
     runs-on: ${{ matrix.os }}
     continue-on-error: ${{ matrix.experimental }}
     steps:
