@@ -103,3 +103,7 @@ This design toolkit is a foundational work made to demonstrate Zenika exceptiona
   - [eslint-plugin-lit-a11y](https://github.com/open-wc/open-wc/tree/master/packages/eslint-plugin-lit-a11y) (_Web Components, Polymer, Lit-HTML_)
   - [stylelint-a11y](https://github.com/YozhikM/stylelint-a11y)
   - [@storybook/addon-a11y](https://www.npmjs.com/package/@storybook/addon-a11y) ([StoryBook](https://storybook.js.org/))
+  - [HTML linter has accessibility rules](https://rules.sonarsource.com/html/tag/accessibility/) in [SonarQube](https://www.sonarqube.org/)
+  - [Asqatasun](https://asqatasun.org/) previously known as Tanaguru
+  - [Github integrated tools (blog)](https://www.adrianbolonio.com/en/accessibility-github-actions/): 
+    [axe-linter](https://github.com/marketplace/axe-linter), [lighthouse-ci github app](https://github.com/apps/lighthouse-ci) 
