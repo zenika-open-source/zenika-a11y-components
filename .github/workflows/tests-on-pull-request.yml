@@ -43,9 +43,13 @@ jobs:
       - run: npm ci
       - id: e2e
         run: npm run test:e2e && echo "::set-output name=${{ matrix.os }}::OK"
+      - run: true
   done:
     name: All tests done
     needs: e2e-tests
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ needs.e2e-tests.outputs.linux }} ${{ needs.e2e-tests.outputs.win }} ${{ needs.e2e-tests.outputs.macos }}
+      - run: |
+        echo Unbuntu tests: ${{ needs.e2e-tests.outputs.linux }}
+        echo Windows tests: ${{ needs.e2e-tests.outputs.win }}
+        echo MacOS tests:   ${{ needs.e2e-tests.outputs.macos }}
